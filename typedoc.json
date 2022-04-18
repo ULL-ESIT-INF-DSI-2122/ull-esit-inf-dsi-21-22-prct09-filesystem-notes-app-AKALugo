@@ -1,0 +1,8 @@
+{
+    "entryPoints": [
+        "./src/modificacion.ts",
+        "./src/addreduce.ts",
+        "./src/restreduce.ts"
+    ],
+    "out": "./typedoc"
+}

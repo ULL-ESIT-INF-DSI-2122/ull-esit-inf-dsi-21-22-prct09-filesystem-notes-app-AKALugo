@@ -7,4 +7,3 @@ export class ImprimirNota {
     return `{\"titulo\": \"${this.nota.getTitulo()}\", \"cuerpo\": \"${this.nota.getCuerpo()}\", \"color\": \"${this.nota.getColor()}\"}`;
   }
 }
-  

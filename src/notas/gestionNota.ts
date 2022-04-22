@@ -47,6 +47,7 @@ export class GestionNota {
 
       fs.writeFileSync(`database/${usuario}/${titulo}.json`, impNota.print());
       console.log(chalk.green("¡Nota modificada!"));
+
       return true;
     } else {
       console.log(chalk.red(`¡ERROR, no se ha encontrado la nota ${titulo} para el usuario ${usuario}!`));
@@ -56,7 +57,7 @@ export class GestionNota {
 
 
   listarNotas(usuario: string) {
-    if (fs.existsSync(`database/${usuario}`) && fs.readdirSync(`database/${usuario}`).length >= 0 ) {
+    if (fs.existsSync(`database/${usuario}`) && fs.readdirSync(`database/${usuario}`).length > 0 ) {
       fs.readdirSync(`database/${usuario}`).forEach((notas) => {
         const informacionNota = fs.readFileSync(`database/${usuario}/${notas}`);
         const jsonNota = JSON.parse(informacionNota.toString());
@@ -78,6 +79,7 @@ export class GestionNota {
       const informacionNota = fs.readFileSync(`database/${usuario}/${titulo}.json`);
       const jsonNota = JSON.parse(informacionNota.toString());
       const nota = new Nota(jsonNota.titulo, jsonNota.cuerpo, jsonNota.color);
+      
       console.log(chalk.keyword(nota.getColor())(nota.getTitulo()));
       console.log(chalk.keyword(nota.getColor())(nota.getCuerpo()));
 

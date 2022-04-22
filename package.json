@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc-watch --onSuccess \"node dist/modificacion.js\"",
+    "start": "tsc-watch --onSuccess \"node dist/modificacion/modificacion.js\"",
     "test": "mocha",
     "doc": "typedoc",
     "coveragelocal": "nyc npm test",

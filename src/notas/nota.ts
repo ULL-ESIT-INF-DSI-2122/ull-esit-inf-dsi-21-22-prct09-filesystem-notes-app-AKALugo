@@ -1,5 +1,5 @@
 
-export type colorType = 'rojo' | 'verde' | 'azul' | 'amarillo';
+export type colorType = 'red' | 'green' | 'blue' | 'yellow';
 
 export class Nota {
   constructor(private titulo: string, private cuerpo: string, private color: colorType) {}

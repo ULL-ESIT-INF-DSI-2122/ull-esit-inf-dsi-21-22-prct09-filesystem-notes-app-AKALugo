@@ -4,11 +4,7 @@ export class ImprimirNota {
   constructor(private nota: Nota) {}
   
   print(): string {
-    let aux: string = "";
-  
-    aux += `Titulo: ${this.nota.getTitulo()}\nCuerpo: ${this.nota.getCuerpo()}\nColor: ${this.nota.getColor()}\n`;
-  
-    return aux;
+    return `{\"titulo\": \"${this.nota.getTitulo()}\", \"cuerpo\": \"${this.nota.getCuerpo()}\", \"color\": \"${this.nota.getColor()}\"}`;
   }
 }
   

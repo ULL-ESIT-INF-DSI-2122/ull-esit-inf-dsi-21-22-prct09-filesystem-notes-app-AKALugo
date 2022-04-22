@@ -35,8 +35,8 @@ yargs.command({
   handler(argv) {
     if (typeof argv.user === 'string' && typeof argv.title === 'string' &&
         typeof argv.body === 'string' && typeof argv.color === 'string' && 
-        (argv.color === 'rojo' || argv.color === 'verde' || argv.color === 'azul'||
-        argv.color === 'amarillo')) {
+        (argv.color === 'red' || argv.color === 'green' || argv.color === 'blue'||
+        argv.color === 'yellow')) {
       gestion.añadirNota(argv.user, argv.title, argv.body, argv.color);
     } else {
       console.log(chalk.red('Argumentos invalidos, reviselos y vuelva a intentarlo'));
@@ -73,8 +73,8 @@ yargs.command({
   handler(argv) {
     if (typeof argv.user === 'string' && typeof argv.title === 'string' &&
         typeof argv.body === 'string' && typeof argv.color === 'string' && 
-        (argv.color === 'rojo' || argv.color === 'verde' || argv.color === 'azul'||
-        argv.color === 'amarillo')) {
+        (argv.color === 'red' || argv.color === 'green' || argv.color === 'blue'||
+        argv.color === 'yellow')) {
       gestion.modifcarNota(argv.user, argv.title, argv.body, argv.color);
     } else {
       console.log(chalk.red('Argumentos invalidos, reviselos y vuelva a intentarlo'));
@@ -120,7 +120,7 @@ yargs.command({
   },
   handler(argv) {
     if (typeof argv.user === 'string') {
-      console.log(chalk.underline('El usuario' + argv.user + ' tiene las siguientes notas:'));
+      console.log(chalk.underline('El usuario ' + argv.user + ' tiene las siguientes notas:'));
       gestion.listarNotas(argv.user);
     } else {
       console.log(chalk.red('Argumentos invalidos, reviselos y vuelva a intentarlo'));

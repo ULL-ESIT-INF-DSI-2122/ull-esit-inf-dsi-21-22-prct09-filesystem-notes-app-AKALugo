@@ -6,7 +6,6 @@ const chalk = require("chalk");
 
 const gestion = new GestionNota();
 
-
 yargs.command({
   command: 'add',
   describe: 'Añade una nueva nota',
@@ -75,7 +74,7 @@ yargs.command({
         typeof argv.body === 'string' && typeof argv.color === 'string' && 
         (argv.color === 'red' || argv.color === 'green' || argv.color === 'blue'||
         argv.color === 'yellow')) {
-      gestion.modifcarNota(argv.user, argv.title, argv.body, argv.color);
+      gestion.modificarNota(argv.user, argv.title, argv.body, argv.color);
     } else {
       console.log(chalk.red('Argumentos invalidos, reviselos y vuelva a intentarlo'));
     }

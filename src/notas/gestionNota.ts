@@ -41,7 +41,7 @@ export class GestionNota {
   }
 
 
-  modifcarNota(usuario: string, titulo: string, cuerpo: string, color: colorType): boolean {
+  modificarNota(usuario: string, titulo: string, cuerpo: string, color: colorType): boolean {
     if (fs.existsSync(`database/${usuario}/${titulo}.json`)) {
       const impNota = new ImprimirNota(new Nota(titulo, cuerpo, color));
 

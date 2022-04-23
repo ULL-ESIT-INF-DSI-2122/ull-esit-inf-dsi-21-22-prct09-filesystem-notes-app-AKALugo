@@ -1,10 +1,21 @@
 import {Nota, colorType} from "./nota";
-import {ImprimirNota} from "./imprimirNota";
+import {JSONNota} from "./jsonNota";
 import * as fs from "fs";
 
 const chalk = require("chalk");
 
+/**
+ * @class Gestion Nota
+ */
 export class GestionNota {
+  /**
+   * Método que crea una nota.
+   * @param usuario nombre del usuario
+   * @param titulo titulo de la nota
+   * @param cuerpo cuerpo de la nota
+   * @param color color de la nota
+   * @returns true si se pudo añadir la nota, false si no.
+   */
   añadirNota(usuario: string, titulo: string, cuerpo: string, color: colorType): boolean {
     if (!fs.existsSync(`database/${usuario}`)) {
       console.log(`Creando database para el usuario: ${usuario}`);
@@ -15,8 +26,8 @@ export class GestionNota {
     }
 
     if (!fs.existsSync(`database/${usuario}/${titulo}.json`)) {
-      const impNota = new ImprimirNota(new Nota(titulo, cuerpo, color));
-      fs.writeFileSync(`database/${usuario}/${titulo}.json`, impNota.print());
+      const impNota = new JSONNota(new Nota(titulo, cuerpo, color));
+      fs.writeFileSync(`database/${usuario}/${titulo}.json`, impNota.json());
 
       console.log(chalk.green("¡Nueva nota añadida!"));
       return true;
@@ -26,7 +37,12 @@ export class GestionNota {
     }
   }
 
-
+  /**
+   * Método que elimina la nota de un usuario.
+   * @param usuario nombre del usuario
+   * @param titulo titulo de la nota
+   * @returns true si se eliminó la nota, false si no.
+   */
   eliminarNota(usuario: string, titulo: string): boolean {
     if (fs.existsSync(`database/${usuario}/${titulo}.json`)) {
       fs.rmSync(`database/${usuario}/${titulo}.json`);
@@ -40,12 +56,19 @@ export class GestionNota {
     }
   }
 
-
+  /**
+   * Método que modifica una nota.
+   * @param usuario nombre del usuario
+   * @param titulo titulo de la nota
+   * @param cuerpo cuerpo de la nota
+   * @param color color de la nota
+   * @returns true si la nota fue modificada, false si no.
+   */
   modificarNota(usuario: string, titulo: string, cuerpo: string, color: colorType): boolean {
     if (fs.existsSync(`database/${usuario}/${titulo}.json`)) {
-      const impNota = new ImprimirNota(new Nota(titulo, cuerpo, color));
+      const impNota = new JSONNota(new Nota(titulo, cuerpo, color));
 
-      fs.writeFileSync(`database/${usuario}/${titulo}.json`, impNota.print());
+      fs.writeFileSync(`database/${usuario}/${titulo}.json`, impNota.json());
       console.log(chalk.green("¡Nota modificada!"));
 
       return true;
@@ -55,7 +78,11 @@ export class GestionNota {
     }
   }
 
-
+  /**
+   * Méto que lista las notas de un usuario.
+   * @param usuario nombre del usuario
+   * @returns true si el usuario tiene alguna nota, false si no.
+   */
   listarNotas(usuario: string) {
     if (fs.existsSync(`database/${usuario}`) && fs.readdirSync(`database/${usuario}`).length > 0 ) {
       fs.readdirSync(`database/${usuario}`).forEach((notas) => {
@@ -73,7 +100,12 @@ export class GestionNota {
     }
   }
 
-
+  /**
+   * Método que muestra la nota del usuario.
+   * @param usuario nombre del usuario
+   * @param titulo titulo de la nota
+   * @returns true si se pudo encontrar la nota, false si no.
+   */
   leerNota(usuario: string, titulo: string) {
     if (fs.existsSync(`database/${usuario}/${titulo}.json`)) {
       const informacionNota = fs.readFileSync(`database/${usuario}/${titulo}.json`);

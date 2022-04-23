@@ -6,6 +6,9 @@ const chalk = require("chalk");
 
 const gestion = new GestionNota();
 
+/**
+ * Comando que permite añadir una nota
+ */
 yargs.command({
   command: 'add',
   describe: 'Añade una nueva nota',
@@ -43,7 +46,9 @@ yargs.command({
   },
 });
 
-
+/**
+ * Comando que permite modificar una nota.
+ */
 yargs.command({
   command: 'modify',
   describe: 'Modifica una nota',
@@ -81,7 +86,9 @@ yargs.command({
   },
 });
 
-
+/**
+ * Comando que permite leer una nota
+ */
 yargs.command({
   command: 'read',
   describe: 'Lee una nota',
@@ -106,7 +113,9 @@ yargs.command({
   },
 });
 
-
+/**
+ * Comando que permite listarlas notas
+ */
 yargs.command({
   command: 'list',
   describe: 'Lista todas las notas',
@@ -127,7 +136,9 @@ yargs.command({
   },
 });
 
-
+/**
+ * Comando que permite borrar una nota.
+ */
 yargs.command({
   command: 'remove',
   describe: 'Elimina una nota',

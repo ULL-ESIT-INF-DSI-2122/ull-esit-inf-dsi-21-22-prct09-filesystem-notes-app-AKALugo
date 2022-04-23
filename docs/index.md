@@ -536,3 +536,8 @@ describe ("Pruebas clase GestionNota", () => {
 En este apartado mostraremos un ejemplo del funcionamiento de nuestra aplicación:
 
 ![Imagen del funcionamiento](./img/1.png)
+
+## Comentario sobre Coveralls
+El `coveralls` de este código es del 100% como se puede apreciar en la imagen de abajo, aunque el badge del `README.md` del repositorio no se actualice.
+
+![Coveralls 100%](./img/2.png)
